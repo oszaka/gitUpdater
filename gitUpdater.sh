@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables
-VAULT_DIR="$HOME/Documents/CODE/obsidianNotes"
+VAULT_DIR="$HOME/Documents/CODE/$1"
 TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
 
 # Validation

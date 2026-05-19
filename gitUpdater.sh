@@ -14,8 +14,8 @@ fi
 
 # 4. Execute the synchronization
 echo "Synchronizing changes..."
-git add .
-git commit -m "Auto-sync: $TIMESTAMP"
-git push
+git add . > /dev/null 2>&1
+git commit -m "Auto-sync: $TIMESTAMP" > /dev/null 2>&1
+git push > /dev/null 2>&1
 
 echo "Notes updated correctly on $TIMESTAMP"

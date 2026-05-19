@@ -4,24 +4,18 @@
 VAULT_DIR="$HOME/Documents/CODE/$1"
 TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
 
-# Validation
-if cd "$VAULT_DIR"; then
-    echo "En la carpeta de notas..."
-else
-    echo "Error: No se pudo encontrar el directorio $VAULT_DIR"
-    exit 1
-fi
+cd "$VAULT_DIR" || { echo "Error: $VAULT_DIR NOT FOUND"; exit 1; }   
 
-# 3. Verificar si hay cambios antes de hacer commit
+# 3. Verify if there are changes to commit
 if [[ -z $(git status --porcelain) ]]; then
-    echo "No hay cambios para sincronizar."
+    echo "No changes to sync."
     exit 0
 fi
 
-# 4. Ejecutar la sincronización
-echo "Sincronizando cambios..."
+# 4. Execute the synchronization
+echo "Synchronizing changes..."
 git add .
 git commit -m "Auto-sync: $TIMESTAMP"
 git push
 
-echo "Notas actualizadas correctamente el $TIMESTAMP"
+echo "Notes updated correctly on $TIMESTAMP"
